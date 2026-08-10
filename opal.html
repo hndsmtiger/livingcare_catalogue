@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LIVINGCARE OPAL | Thermoelectric Water Purifier</title>
+<style>
+    :root {
+        --samsung-black: #000000;
+        --samsung-gray-900: #1a1a1a;
+        --samsung-gray-700: #444444;
+        --samsung-gray-500: #888888;
+        --samsung-gray-200: #e6e6e6;
+        --samsung-gray-100: #f6f6f6;
+        --samsung-white: #ffffff;
+        --samsung-blue: #1428a0;
+        --font-family: 'SamsungOne', 'Pretendard', '맑은 고딕', sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+        font-family: var(--font-family);
+        color: var(--samsung-black);
+        background-color: var(--samsung-white);
+        line-height: 1.5;
+        word-break: keep-all;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* Header Navigation */
+    .header {
+        border-bottom: 1px solid var(--samsung-gray-200);
+        background: var(--samsung-white);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+    }
+    .header-inner {
+        max-width: 1440px;
+        margin: 0 auto;
+        padding: 16px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 14px;
+        font-weight: 700;
+    }
+    .nav-links { display: flex; gap: 30px; }
+    .nav-links a { text-decoration: none; color: var(--samsung-black); transition: opacity 0.2s; }
+    .nav-links a:hover, .nav-links a.active { opacity: 0.6; text-decoration: underline; }
+    .logo { font-size: 20px; letter-spacing: -1px; }
+
+    /* 발뮤다 스타일 서브 네비게이션 (Sticky LNB) */
+    .sub-nav {
+        position: sticky;
+        top: 57px;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid var(--samsung-gray-200);
+        z-index: 90;
+    }
+    .sub-nav-inner {
+        max-width: 1440px;
+        margin: 0 auto;
+        padding: 0 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 54px;
+    }
+    .sub-nav-links {
+        display: flex;
+        gap: 32px;
+        list-style: none;
+    }
+    .sub-nav-links a {
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--samsung-gray-500);
+        transition: color 0.2s;
+        padding: 16px 0;
+        display: inline-block;
+    }
+    .sub-nav-links a:hover,
+    .sub-nav-links a.active {
+        color: var(--samsung-black);
+        border-bottom: 2px solid var(--samsung-black);
+    }
+    .sub-nav-cta {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+    .sub-nav-price {
+        font-size: 14px;
+        font-weight: 700;
+    }
+    .btn-buy {
+        padding: 8px 20px;
+        background: var(--samsung-black);
+        color: var(--samsung-white);
+        border-radius: 100px;
+        font-size: 13px;
+        font-weight: 700;
+    }
+
+    /* Breadcrumb */
+    .breadcrumb {
+        max-width: 1440px;
+        margin: 0 auto;
+        padding: 16px 40px 0;
+        font-size: 12px;
+        color: var(--samsung-gray-500);
+    }
+
+    /* Section 1: Product Hero Section */
+    .product-hero {
+        max-width: 1440px;
+        margin: 0 auto;
+        padding: 24px 40px 80px;
+        display: grid;
+        grid-template-columns: 1.2fr 1fr;
+        gap: 80px;
+        align-items: flex-start;
+    }
+
+    /* 이미지 갤러리 */
+    .product-gallery { width: 100%; }
+
+    .main-image-container {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 1/1;
+        background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
+        border-radius: 24px;
+        overflow: hidden;
+        margin-bottom: 16px;
+    }
+
+    .main-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: opacity 0.3s ease;
+    }
+
+    .gallery-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255, 255, 255, 0.95);
+        border: none;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s, background 0.3s, transform 0.2s;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        z-index: 10;
+    }
+
+    .main-image-container:hover .gallery-btn { opacity: 1; }
+    .gallery-btn:hover {
+        background: rgba(255, 255, 255, 1);
+        transform: translateY(-50%) scale(1.1);
+    }
+    .prev-btn { left: 16px; }
+    .next-btn { right: 16px; }
+
+    .image-counter {
+        position: absolute;
+        bottom: 16px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+        padding: 8px 20px;
+        border-radius: 20px;
+        font-size: 13px;
+        font-weight: 600;
+        backdrop-filter: blur(10px);
+    }
+
+    .thumbnail-list {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 12px;
+        width: 100%;
+    }
+
+    .thumbnail {
+        aspect-ratio: 1/1;
+        border-radius: 12px;
+        overflow: hidden;
+        cursor: pointer;
+        border: 2px solid transparent;
+        transition: border-color 0.3s, transform 0.2s;
+        background: var(--samsung-gray-100);
+    }
+
+    .thumbnail img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .thumbnail:hover { border-color: var(--samsung-gray-500); transform: translateY(-2px); }
+    .thumbnail.active { border-color: var(--samsung-black); transform: translateY(-2px); }
+
+    .product-info h1 {
+        font-size: 32px;
+        font-weight: 800;
+        margin-bottom: 8px;
+        letter-spacing: -0.5px;
+    }
+    .model-number { font-size: 14px; color: var(--samsung-gray-500); margin-bottom: 24px; }
+    .rating { display: flex; align-items: center; gap: 8px; margin-bottom: 32px; font-size: 14px; }
+    .stars { color: #ffc107; font-size: 18px; }
+
+    .accordion-group { 
+        border-bottom: 1px solid var(--samsung-gray-200); 
+    }
+    .accordion-btn {
+        width: 100%;
+        padding: 20px 0;
+        background: none;
+        border: none;
+        font-family: inherit;
+        font-size: 15px;
+        font-weight: 700;
+        color: var(--samsung-black);
+        letter-spacing: normal;
+        text-transform: none;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: color 0.2s;
+    }
+    .accordion-btn:hover { 
+        color: var(--samsung-gray-700); 
+    }
+    .accordion-icon { 
+        font-size: 18px; 
+        font-weight: 300; 
+        color: var(--samsung-gray-500); 
+    }
+    .accordion-panel {
+        display: none;
+        padding-bottom: 24px;
+        font-family: inherit;
+        font-size: 14px;
+        line-height: 1.6;
+        letter-spacing: normal;
+        color: var(--samsung-gray-700);
+    }
+    .accordion-panel p { 
+        margin-bottom: 12px; 
+    }
+    .info-list { 
+        list-style: none; 
+        padding: 0; 
+    }
+    .info-list li {
+        padding: 10px 0;
+        font-family: inherit;
+        font-size: 14px;
+        letter-spacing: normal;
+        color: var(--samsung-gray-700);
+        border-bottom: 1px solid var(--samsung-gray-100);
+    }
+    .info-list li:last-child { 
+        border-bottom: none; 
+    }
+    .info-list strong { 
+        color: var(--samsung-black); 
+        font-weight: 700; 
+    }
+
+    .options-group { 
+        margin-top: 32px; 
+        margin-bottom: 32px; 
+    }
+    .option-title { 
+        font-size: 16px; 
+        font-weight: 700; 
+        margin-bottom: 12px; 
+    }
+    .option-buttons { 
+        display: flex; 
+        flex-wrap: wrap; 
+        gap: 10px; 
+    }
+    .option-btn {
+        padding: 12px 24px;
+        border: 1px solid var(--samsung-gray-200);
+        border-radius: 100px;
+        background: var(--samsung-white);
+        font-size: 14px;
+        cursor: pointer;
+        transition: all 0.2s;
+        font-weight: 500;
+    }
+    .option-btn:hover { 
+        border-color: var(--samsung-black); 
+    }
+    .option-btn.active {
+        background: var(--samsung-black);
+        color: var(--samsung-white);
+        border-color: var(--samsung-black);
+    }
+
+    .cta-buttons { 
+        display: flex; 
+        gap: 12px; 
+        margin-top: 40px; 
+    }
+    .btn-primary {
+        flex: 1;
+        padding: 16px 24px;
+        background: var(--samsung-black);
+        color: var(--samsung-white);
+        border: none;
+        border-radius: 100px;
+        font-size: 16px;
+        font-weight: 700;
+        cursor: pointer;
+        text-align: center;
+    }
+
+    .sec-container {
+        padding: 100px 40px;
+        max-width: 1200px;
+        margin: 0 auto;
+        text-align: center;
+    }
+    .sec-category {
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        color: var(--samsung-gray-500);
+        text-transform: uppercase;
+        margin-bottom: 12px;
+    }
+    .sec-title {
+        font-size: 40px;
+        font-weight: 800;
+        line-height: 1.3;
+        letter-spacing: -1px;
+        margin-bottom: 20px;
+        word-break: keep-all;
+    }
+    .sec-desc {
+        font-size: 17px;
+        color: var(--samsung-gray-700);
+        line-height: 1.6;
+        margin-bottom: 50px;
+    }
+    .feature-image {
+        width: 100%;
+        max-width: 1000px;
+        height: 500px;
+        background: #e0e0e0;
+        margin: 0 auto;
+        border-radius: 32px;
+        overflow: hidden;
+    }
+    .feature-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    .bg-light { background: var(--samsung-gray-100); }
+    .bg-dark { background: var(--samsung-black); color: var(--samsung-white); }
+    .bg-dark .sec-desc { color: var(--samsung-gray-500); }
+
+    .care-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 32px;
+        max-width: 1000px;
+        margin: 50px auto 0;
+    }
+    .care-card {
+        background: var(--samsung-white);
+        padding: 48px 32px;
+        border-radius: 24px;
+        text-align: left;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    }
+    .care-card h3 { font-size: 24px; font-weight: 800; margin-bottom: 24px; color: var(--samsung-black); }
+    .care-list { list-style: none; }
+    .care-list li {
+        padding: 12px 0;
+        border-bottom: 1px solid var(--samsung-gray-200);
+        font-size: 15px;
+        color: var(--samsung-gray-700);
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+    }
+    .care-list li::before { content: "✓"; color: var(--samsung-blue); font-weight: 800; }
+
+    .story-block {
+        max-width: 800px;
+        margin: 0 auto 80px;
+        text-align: center;
+    }
+    .story-quote {
+        font-size: 22px;
+        font-weight: 600;
+        line-height: 1.7;
+        margin-bottom: 24px;
+        letter-spacing: -0.5px;
+    }
+
+    .review-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px; text-align: left; }
+    .review-header h2 { font-size: 32px; font-weight: 800; }
+    .review-summary { text-align: right; }
+    .review-summary .big-score { font-size: 48px; font-weight: 800; }
+    .review-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; text-align: left; }
+    .review-card { padding: 32px; border: 1px solid var(--samsung-gray-200); border-radius: 16px; background: var(--samsung-white); }
+    .review-card .stars { margin-bottom: 16px; }
+    .review-card p { font-size: 15px; line-height: 1.5; color: var(--samsung-gray-700); }
+
+    .spec-table {
+        width: 100%;
+        max-width: 1000px;
+        margin: 0 auto;
+        border-collapse: collapse;
+        text-align: left;
+    }
+    .spec-table th, .spec-table td {
+        padding: 18px 24px;
+        border-bottom: 1px solid var(--samsung-gray-200);
+        font-size: 14px;
+    }
+    .spec-table th {
+        width: 30%;
+        background: var(--samsung-gray-100);
+        font-weight: 700;
+        color: var(--samsung-black);
+    }
+
+    .footer {
+        background: var(--samsung-gray-100);
+        padding: 60px 40px;
+        font-size: 12px;
+        color: var(--samsung-gray-500);
+        border-top: 1px solid var(--samsung-gray-200);
+    }
+    .footer-inner { max-width: 1440px; margin: 0 auto; }
+    .footer-links { display: flex; gap: 20px; margin-bottom: 20px; font-weight: 700; color: var(--samsung-black); }
+
+    @media (max-width: 1024px) {
+        .product-hero { grid-template-columns: 1fr; gap: 40px; }
+        .sec-title { font-size: 32px; }
+        .feature-image { height: 320px; }
+    }
+    @media (max-width: 768px) {
+        .sub-nav-links { display: none; }
+        .header-inner, .sub-nav-inner { padding: 0 20px; }
+        .sec-container { padding: 60px 20px; }
+    }
+</style>
+</head>
+<body>
+
+<header class="header">
+    <div class="header-inner">
+        <div class="logo">LIVINGCARE</div>
+        <nav class="nav-links">
+            <a href="./lumos.html">LUMOS</a>
+            <a href="./opal.html" class="active">OPAL</a>
+            <a href="./onyx.html">ONYX</a>
+            <a href="./jewel.html">JEWEL</a>
+            <a href="./enquiry.html">ENQUIRY</a>
+        </nav>
+        <div style="display: flex; gap: 16px;">
+            <a href="#">🔍</a>
+            <a href="#">👤</a>
+            <a href="#">🛒</a>
+        </div>
+    </div>
+</header>
+
+<nav class="sub-nav">
+    <div class="sub-nav-inner">
+        <ul class="sub-nav-links">
+            <li><a href="#product" class="active">Product</a></li>
+            <li><a href="#technology">Technology</a></li>
+            <li><a href="#design">Design</a></li>
+            <li><a href="#filter">Filter</a></li>
+            <li><a href="#story">Story</a></li>
+            <li><a href="#specification">Specification</a></li>
+        </ul>
+        <div class="sub-nav-cta">
+            <span class="sub-nav-price">OPAL UCHP-02</span>
+            <a href="./enquiry.html" class="btn-buy">Enquiry</a>
+        </div>
+    </div>
+</nav>
+
+<div class="breadcrumb">
+    Home &gt; Products &gt; OPAL &gt; OPAL 빌트인 정수기
+</div>
+
+<section id="product" class="product-hero">
+    <div class="product-gallery">
+        <div class="main-image-container">
+            <img id="mainImage" src="./images/main-product-01.jpg" alt="OPAL 빌트인 정수기" class="main-image">
+            <button class="gallery-btn prev-btn" onclick="changeImage(-1)" aria-label="이전 이미지">❮</button>
+            <button class="gallery-btn next-btn" onclick="changeImage(1)" aria-label="다음 이미지">❯</button>
+            <div class="image-counter">
+                <span id="currentImg">1</span> / <span id="totalImg">5</span>
+            </div>
+        </div>
+        <div class="thumbnail-list">
+            <div class="thumbnail active" onclick="setImage(0)"><img src="./images/main-product-01.jpg" alt="정수기 이미지 1"></div>
+            <div class="thumbnail" onclick="setImage(1)"><img src="./images/main-product-02.jpg" alt="정수기 이미지 2"></div>
+            <div class="thumbnail" onclick="setImage(2)"><img src="./images/main-product-03.jpg" alt="정수기 이미지 3"></div>
+            <div class="thumbnail" onclick="setImage(3)"><img src="./images/main-product-04.jpg" alt="정수기 이미지 4"></div>
+            <div class="thumbnail" onclick="setImage(4)"><img src="./images/main-product-05.jpg" alt="정수기 이미지 5"></div>
+        </div>
+    </div>
+    
+    <div class="product-info">
+        <h1>OPAL Built-in Purifier</h1>
+        <div class="model-number">UCHP-02</div>
+        
+        <div class="rating">
+            <span class="stars">★★★★★</span>
+            <strong>4.8</strong>
+            <span style="color: var(--samsung-gray-500);">(975)</span>
+        </div>
+
+        <div class="accordion-group">
+            <button class="accordion-btn active" onclick="toggleAccordion(this)">
+                <span>Description</span>
+                <span class="accordion-icon">−</span>
+            </button>
+            <div class="accordion-panel" style="display: block;">
+                <p>Discover the Livingcare under sink water purifier, the perfect blend of innovation and convenience for modern living.</p>
+                <p>Its sleek, space-saving design fits seamlessly under your sink, while the multi-functional faucet delivers hot, cold, and ambient water with adjustable volume control at your fingertips. Tailored for families and small households, this purifier redefines hydration with style and efficiency.</p>
+            </div>
+        </div>
+
+        <div class="accordion-group">
+            <button class="accordion-btn" onclick="toggleAccordion(this)">
+                <span>Information</span>
+                <span class="accordion-icon">+</span>
+            </button>
+            <div class="accordion-panel">
+                <ul class="info-list">
+                    <li><strong>Model:</strong> UCHP-02</li>
+                    <li><strong>Filtration:</strong> NSF Certified Material</li>
+                    <li><strong>Temperature:</strong> Cold(3LV) / Hot(3LV) / Room</li>
+                    <li><strong>Filter life span:</strong> 1st(6M), 2nd(12M)</li>
+                    <li><strong>Installation:</strong> Built-in</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="accordion-group">
+            <button class="accordion-btn" onclick="toggleAccordion(this)">
+                <span>Dimension</span>
+                <span class="accordion-icon">+</span>
+            </button>
+            <div class="accordion-panel">
+                <ul class="info-list">
+                    <li><strong>Main Body:</strong> 130(W) x 330(D) x 320(H)mm</li>
+                    <li><strong>Faucet:</strong> 54(W) x 185(D) x 280(H)mm</li>
+                    <li><strong>M/B Weight:</strong> Approx. 6.5 kg</li>
+                    <li><strong>Faucet Weight:</strong> Approx. 1.2 kg</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="options-group">
+            <div class="option-title">Product Option</div>
+            <div class="option-buttons" id="purifierType">
+                <button class="option-btn" data-value="purified-only">Ambient Only</button>
+                <button class="option-btn" data-value="cold">Cold & Ambient Only</button>
+                <button class="option-btn active" data-value="cold-hot">Cold, Hot & Ambient</button>
+            </div>
+        </div>
+
+        <div class="options-group">
+            <div class="option-title">Colors</div>
+            <div class="option-buttons" id="color">
+                <button class="option-btn active" data-value="cool-gray">Cool Gray</button>
+                <button class="option-btn" data-value="off-black">Off Black</button>
+                <button class="option-btn" data-value="off-white">Mellow Beige </button>
+            </div>
+        </div>
+
+        <div class="cta-buttons">
+            <a href="./enquiry.html" class="btn-primary">Enquiry</a>
+        </div>
+    </div>
+</section>
+
+<div id="technology" class="bg-light">
+    <section class="sec-container">
+        <div class="sec-category">Technology</div>
+        <h2 class="sec-title">내가 원하는 온도와 출수량으로<br>상황에 맞춰 사용하는 출수 커스터마이징</h2>
+        <p class="sec-desc">SmartThings로 내가 원하는 출수량과 온도를 설정하세요.<br>10ml 단위까지 원하는 대로 미세 출수량 조절이 가능합니다.</p>
+        <div class="feature-image">
+            <img src="./images/feature-02.png" alt="Smart Things 앱 연동">
+        </div>
+
+        <div style="margin-top: 100px;">
+            <h2 class="sec-title">방문 케어 없이도 99.9% 청결하게<br>청소하는 직수관 자동 살균</h2>
+            <p class="sec-desc">3일에 한 번 자동 전기분해 살균 시스템이 세균의 99.9%를 제거해 주니까<br>일정도 위생도 걱정 없죠.</p>
+            <div class="feature-image">
+                <img src="./images/feature-04.jpg" alt="직수관 자동 살균 시스템">
+            </div>
+        </div>
+    </section>
+</div>
+
+<div id="design" class="bg-dark">
+    <section class="sec-container">
+        <div class="sec-category" style="color:var(--samsung-gray-500);">Design</div>
+        <h2 class="sec-title" style="color:var(--samsung-white);">당신의 취향까지 생각한<br>다양한 파우셋 컬러</h2>
+        <p class="sec-desc">인테리어에 딱 맞는 컬러로 자유롭게 선택하세요.<br>차분한 Cool Gray, Off Black부터 감각적인 Off White, Mellow Beige까지.</p>
+        <div class="feature-image">
+            <img src="./images/feature-01.jpg" alt="파우셋 컬러 디테일">
+        </div>
+    </section>
+</div>
+
+<div id="filter">
+    <section class="sec-container">
+        <div class="sec-category">Filter System</div>
+        <h2 class="sec-title">미세플라스틱(Microplastics) 제거<br>NSF 인증받은 4단계 필터 시스템</h2>
+        <p class="sec-desc">NSF 인증을 받은 4단계 필터로 미세플라스틱과 중금속, 기생충,<br>의약물질 및 신종 오염물질을 포함하여 바이러스까지 효과적으로 제거해 줍니다.</p>
+        <div class="feature-image" style="margin-bottom: 60px;">
+            <img src="./images/feature-03.png" alt="4단계 필터 시스템 구조">
+        </div>
+
+        <div class="care-cards">
+            <div class="care-card">
+                <h3>1st Filter (6M)</h3>
+                <ul class="care-list">
+                    <li>종합점검 및 필터 교체</li>
+                    <li>모듈 클리닝 및 내외부 세척</li>
+                    <li>출수구 코크 분해 세척</li>
+                    <li>최대 6년 무상수리 서비스 제공</li>
+                </ul>
+            </div>
+            <div class="care-card">
+                <h3>2nd Filter (12M)</h3>
+                <ul class="care-list">
+                    <li>소모품(정수필터) 정기 배송</li>
+                    <li>내 손으로 쉽게 하는 필터 교체</li>
+                    <li>냉온수 모듈 및 필터 수명 확인</li>
+                    <li>구독 기간 내 무상수리 서비스 제공</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</div>
+
+<div id="story" class="bg-light">
+    <section class="sec-container">
+        <div class="sec-category">Story & Reviews</div>
+        <div class="story-block">
+            <p class="story-quote">
+                "Discover the Livingcare under sink water purifier, the perfect blend of innovation and convenience for modern living."
+            </p>
+            <p style="color:var(--samsung-gray-700); font-size:15px; line-height:1.7;">
+                공간을 해치지 않는 깔끔한 언더싱크 설계와 라이프스타일을 위한 미세 제어 기술.<br>
+                리빙케어가 제안하는 정수의 새로운 기준을 경험해보세요.
+            </p>
+        </div>
+
+        <div class="review-header">
+            <h2>Customer Reviews</h2>
+            <div class="review-summary">
+                <div class="big-score">4.8</div>
+                <div class="stars">★★★★★</div>
+                <div style="color: var(--samsung-gray-500); font-size: 14px;">975개의 리뷰</div>
+            </div>
+        </div>
+        <div class="review-cards">
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p>아니 이렇게 좋은 정수기가 있다는게 믿어지지 않아요. 씽크대 위에 구멍하나 뚫고 하부에 컴퓨터 본체처럼 생긴거 하나 넣고 끝. 간단하게 설치하고 필터도 간편하게...</p>
+            </div>
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p>이것저것 고민하다가 온수 냉수 정수 기능이 다 있어서 최종적으로 선택하게 되었습니다. 청소도 간편하고 음수량조절도 다양하게 나누어져 있어 사용하기 너무 편리합니다.</p>
+            </div>
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p>정수기를 구매할려고 검색도 많이 하고 상품평도 많이보고 비교해보다 결국 비스포크정수기로 결정해서 구매했어요~ 자리도 차지 많이 하지 않고 깔끔해서 맘에 듭니다.</p>
+            </div>
+        </div>
+    </section>
+</div>
+
+<div id="specification">
+    <section class="sec-container">
+        <div class="sec-category">Specification</div>
+        <h2 class="sec-title">Specifications</h2>
+        <p class="sec-desc">OPAL 빌트인 정수기 상세 사양 정보입니다.</p>
+
+        <table class="spec-table">
+            <tr>
+                <th>Model</th>
+                <td>OPAL Built-in Purifier (UCHP-02)</td>
+            </tr>
+            <tr>
+                <th>Filtration</th>
+                <td>NSF Certified 4-Stage Filtration System</td>
+            </tr>
+            <tr>
+                <th>Temperature</th>
+                <td>Cold (3 Levels) / Hot (3 Levels) / Ambient (Room)</td>
+            </tr>
+            <tr>
+                <th>Filter Life Span</th>
+                <td>1st Filter (6 Months) / 2nd Filter (12 Months)</td>
+            </tr>
+            <tr>
+                <th>Installation</th>
+                <td>Built-in (Under Sink)</td>
+            </tr>
+            <tr>
+                <th>Main Body Dimension</th>
+                <td>130 (W) x 330 (D) x 320 (H) mm</td>
+            </tr>
+            <tr>
+                <th>Faucet Dimension</th>
+                <td>54 (W) x 185 (D) x 280 (H) mm</td>
+            </tr>
+            <tr>
+                <th>Weight</th>
+                <td>Main Body: Approx. 6.5 kg / Faucet: Approx. 1.2 kg</td>
+            </tr>
+        </table>
+    </section>
+</div>
+
+<footer class="footer">
+    <div class="footer-inner">
+        <div class="footer-links">
+            <a href="#">회사소개</a>
+            <a href="#">이용약관</a>
+            <a href="#"><strong>개인정보처리방침</strong></a>
+            <a href="#">전자공고</a>
+            <a href="#">고객센터</a>
+        </div>
+        <p>
+            (주)리빙케어 | 대표자: 권택율 | 사업자등록번호: 514-81-66908<br>
+            통신판매업신고번호: 제달성-0000호 | 주소: 대구광역시 달성군 유가읍 테크노남로3길 7<br>
+            <br>
+            * 본 페이지의 이미지는 연출된 이미지로 실제 제품과 다를 수 있습니다.
+        </p>
+    </div>
+</footer>
+
+<script>
+let currentImageIndex = 0;
+const images = [
+    './images/main-product-01.jpg',
+    './images/main-product-02.jpg',
+    './images/main-product-03.jpg',
+    './images/main-product-04.jpg',
+    './images/main-product-05.jpg'
+];
+
+function setImage(index) {
+    currentImageIndex = index;
+    const mainImage = document.getElementById('mainImage');
+    const thumbnails = document.querySelectorAll('.thumbnail');
+
+    mainImage.style.opacity = '0';
+    setTimeout(() => {
+        mainImage.src = images[index];
+        mainImage.style.opacity = '1';
+    }, 150);
+
+    thumbnails.forEach((thumb, i) => {
+        if (i === index) thumb.classList.add('active');
+        else thumb.classList.remove('active');
+    });
+    updateImageCounter();
+}
+
+function changeImage(direction) {
+    let newIndex = currentImageIndex + direction;
+    if (newIndex < 0) newIndex = images.length - 1;
+    if (newIndex >= images.length) newIndex = 0;
+    setImage(newIndex);
+}
+
+function updateImageCounter() {
+    document.getElementById('currentImg').textContent = currentImageIndex + 1;
+}
+
+function toggleAccordion(btn) {
+    const panel = btn.nextElementSibling;
+    const icon = btn.querySelector('.accordion-icon');
+    const isOpen = panel.style.display === 'block';
+
+    document.querySelectorAll('.accordion-panel').forEach(p => p.style.display = 'none');
+    document.querySelectorAll('.accordion-icon').forEach(i => i.textContent = '+');
+
+    if (!isOpen) {
+        panel.style.display = 'block';
+        icon.textContent = '−';
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const optionGroups = ['purifierType', 'color'];
+    optionGroups.forEach(groupId => {
+        const group = document.getElementById(groupId);
+        if (group) {
+            const buttons = group.querySelectorAll('.option-btn');
+            buttons.forEach(button => {
+                button.addEventListener('click', function() {
+                    buttons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+        }
+    });
+});
+
+window.addEventListener('scroll', () => {
+    const sections = document.querySelectorAll('section[id], div[id]');
+    const navLinks = document.querySelectorAll('.sub-nav-links a');
+    
+    let current = '';
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop - 120;
+        if (pageYOffset >= sectionTop) {
+            current = section.getAttribute('id');
+        }
+    });
+
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+        }
+    });
+});
+</script>
+
+</body>
+</html>
