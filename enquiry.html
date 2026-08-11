@@ -14,7 +14,7 @@
         --samsung-gray-100: #f6f6f6;
         --samsung-white: #ffffff;
         --samsung-blue: #1428a0;
-        --font-family: 'SamsungOne', 'Malgun Gothic', '맑은 고딕', sans-serif;
+        --font-family: 'SamsungOne', 'Pretendard', '맑은 고딕', sans-serif;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -26,6 +26,8 @@
         line-height: 1.5;
         -webkit-font-smoothing: antialiased;
     }
+
+    a { text-decoration: none; color: inherit; }
 
     /* Header Navigation */
     .header {
@@ -48,7 +50,7 @@
     .nav-links { display: flex; gap: 30px; }
     .nav-links a { text-decoration: none; color: var(--samsung-black); transition: opacity 0.2s; }
     .nav-links a:hover, .nav-links a.active { opacity: 0.6; text-decoration: underline; }
-    .logo { font-size: 20px; letter-spacing: -1px; }
+    .logo { font-size: 20px; letter-spacing: -1px; font-weight: 800; }
 
     /* Breadcrumb */
     .breadcrumb {
@@ -142,65 +144,11 @@
         resize: vertical;
     }
 
-    /* reCAPTCHA placeholder */
-    .recaptcha-box {
-        border: 1px solid var(--samsung-gray-200);
-        border-radius: 4px;
-        padding: 16px;
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        background: #f9f9f9;
-        margin-bottom: 24px;
-    }
-    .recaptcha-checkbox {
-        width: 28px;
-        height: 28px;
-        border: 2px solid #c1c1c1;
-        border-radius: 2px;
-        background: var(--samsung-white);
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: all 0.2s;
-    }
-    .recaptcha-checkbox:hover {
-        border-color: var(--samsung-gray-500);
-    }
-    .recaptcha-checkbox.checked {
-        background: var(--samsung-blue);
-        border-color: var(--samsung-blue);
-    }
-    .recaptcha-checkbox.checked::after {
-        content: "✓";
-        color: white;
-        font-size: 16px;
-        font-weight: 700;
-    }
-    .recaptcha-text {
-        font-size: 14px;
-        color: var(--samsung-gray-700);
-    }
-    .recaptcha-logo {
-        margin-left: auto;
-        text-align: center;
-    }
-    .recaptcha-logo img {
-        width: 32px;
-        height: 32px;
-    }
-    .recaptcha-logo span {
-        display: block;
-        font-size: 10px;
-        color: var(--samsung-gray-500);
-    }
-
     /* Submit Button */
     .btn-submit {
         width: 100%;
         padding: 16px 24px;
-        background: #2563eb;
+        background: var(--samsung-black);
         color: var(--samsung-white);
         border: none;
         border-radius: 10px;
@@ -210,14 +158,10 @@
         transition: background 0.2s, transform 0.1s;
     }
     .btn-submit:hover {
-        background: #1d4ed8;
+        background: var(--samsung-gray-900);
     }
     .btn-submit:active {
         transform: scale(0.98);
-    }
-    .btn-submit:disabled {
-        background: var(--samsung-gray-500);
-        cursor: not-allowed;
     }
 
     /* Success Message */
@@ -275,7 +219,6 @@
     .footer-inner { max-width: 1440px; margin: 0 auto; }
     .footer-links { display: flex; gap: 20px; margin-bottom: 20px; font-weight: 700; color: var(--samsung-black); }
 
-    /* Responsive */
     @media (max-width: 768px) {
         .header-inner { padding: 16px 24px; }
         .nav-links { display: none; }
@@ -290,11 +233,11 @@
     <div class="header-inner">
         <div class="logo">LIVINGCARE</div>
         <nav class="nav-links">
-            <a href="./lumos.html">LUMOS</a>
-            <a href="./opal.html">OPAL</a>
-            <a href="./onyx.html">ONYX</a>
-            <a href="./jewel.html">JEWEL</a>
-            <a href="./enquiry.html" class="active">ENQUIRY</a>
+            <a href="lumos.html">LUMOS</a>
+            <a href="opal.html">OPAL</a>
+            <a href="onyx.html">ONYX</a>
+            <a href="jewel.html">JEWEL</a>
+            <a href="enquiry.html" class="active">ENQUIRY</a>
         </nav>
         <div style="display: flex; gap: 16px;">
             <a href="#" style="color:black; text-decoration:none;">🔍</a>
@@ -309,7 +252,6 @@
 </div>
 
 <section class="enquiry-section">
-    <!-- Form -->
     <div id="enquiryForm">
         <div class="enquiry-header">
             <h1>Contact Us</h1>
@@ -318,11 +260,9 @@
         </div>
 
         <form id="contactForm" action="https://formsubmit.co/mktg@lcdv.co.kr" method="POST">
-            <!-- FormSubmit 설정 -->
             <input type="hidden" name="_subject" value="[LIVINGCARE] New Product Enquiry">
             <input type="hidden" name="_template" value="table">
             <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_next" value="">
 
             <div class="form-group">
                 <label class="form-label">Full Name <span class="required">*</span></label>
@@ -368,75 +308,33 @@
                 <textarea name="message" class="form-textarea" placeholder="Tell us more about your enquiry..." required></textarea>
             </div>
 
-            <!-- reCAPTCHA placeholder -->
-            <div class="recaptcha-box">
-                <div class="recaptcha-checkbox" id="recaptchaCheck" onclick="toggleRecaptcha()"></div>
-                <span class="recaptcha-text">I'm not a robot</span>
-                <div class="recaptcha-logo">
-                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                        <path d="M16 2L4 8v8c0 7.18 5.12 13.9 12 15.5 6.88-1.6 12-8.32 12-15.5V8L16 2z" fill="#1a73e8"/>
-                        <path d="M16 7L9 10.5v4.5c0 5.25 3.75 10.15 7 11.5 3.25-1.35 7-6.25 7-11.5v-4.5L16 7z" fill="#4285f4"/>
-                    </svg>
-                    <span>reCAPTCHA</span>
-                </div>
-            </div>
-
             <button type="submit" class="btn-submit" id="submitBtn">Submit Enquiry</button>
         </form>
     </div>
 
-    <!-- Success Message -->
     <div class="success-message" id="successMessage">
         <div class="success-icon">✓</div>
         <h2>Thank You!</h2>
         <p>Your enquiry has been submitted successfully. Our product specialist will contact you shortly.</p>
-        <a href="./lumos.html" class="btn-back">Back to Product</a>
+        <a href="lumos.html" class="btn-back">Back to Product</a>
     </div>
 </section>
 
 <footer class="footer">
     <div class="footer-inner">
         <div class="footer-links">
-            <a href="#" style="text-decoration:none; color:var(--samsung-black);">회사소개</a>
-            <a href="#" style="text-decoration:none; color:var(--samsung-black);">이용약관</a>
-            <a href="#" style="text-decoration:none; color:var(--samsung-black);"><strong>개인정보처리방침</strong></a>
-            <a href="#" style="text-decoration:none; color:var(--samsung-black);">전자공고</a>
-            <a href="#" style="text-decoration:none; color:var(--samsung-black);">고객센터</a>
+            <a href="#">회사소개</a>
+            <a href="#">이용약관</a>
+            <a href="#"><strong>개인정보처리방침</strong></a>
+            <a href="#">전자공고</a>
+            <a href="#">고객센터</a>
         </div>
         <p>
             (주)리빙케어 | 대표자: 권택율 | 사업자등록번호: 514-81-66908<br>
-            통신판매업신고번호: 제달성-0000호 | 주소: 대구광역시 달성군 유가읍 테크노남로3길 7<br>
-            호스팅서비스제공자: 호스팅서버
+            통신판매업신고번호: 제달성-0000호 | 주소: 대구광역시 달성군 유가읍 테크노남로3길 7
         </p>
     </div>
 </footer>
-
-<script>
-let recaptchaVerified = false;
-
-function toggleRecaptcha() {
-    const checkbox = document.getElementById('recaptchaCheck');
-    recaptchaVerified = !recaptchaVerified;
-    checkbox.classList.toggle('checked', recaptchaVerified);
-}
-
-document.getElementById('contactForm').addEventListener('submit', function(e) {
-    const form = document.getElementById('enquiryForm');
-    const success = document.getElementById('successMessage');
-
-    const currentUrl = window.location.href;
-    const nextInput = document.querySelector('input[name="_next"]');
-    nextInput.value = currentUrl + '?submitted=true';
-});
-
-window.addEventListener('DOMContentLoaded', function() {
-    const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.get('submitted') === 'true') {
-        document.getElementById('enquiryForm').style.display = 'none';
-        document.getElementById('successMessage').classList.add('show');
-    }
-});
-</script>
 
 </body>
 </html>

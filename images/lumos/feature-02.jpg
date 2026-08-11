@@ -2,5 +2,5 @@
       <rect width="1000" height="500" fill="#f1f3f5"/>
       <rect x="50" y="50" width="900" height="400" rx="24" fill="#ffffff" stroke="#1428a0" stroke-width="4"/>
       <text x="500" y="240" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="32" font-weight="bold" fill="#111827" text-anchor="middle">LIVINGCARE LUMOS</text>
-      <text x="500" y="280" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="18" fill="#1428a0" text-anchor="middle">Key Feature Highlight 01</text>
+      <text x="500" y="280" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="18" fill="#1428a0" text-anchor="middle">Key Feature Highlight 02</text>
     </svg>

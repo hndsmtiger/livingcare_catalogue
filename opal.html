@@ -51,7 +51,7 @@
     .nav-links { display: flex; gap: 30px; }
     .nav-links a { text-decoration: none; color: var(--samsung-black); transition: opacity 0.2s; }
     .nav-links a:hover, .nav-links a.active { opacity: 0.6; text-decoration: underline; }
-    .logo { font-size: 20px; letter-spacing: -1px; }
+    .logo { font-size: 20px; letter-spacing: -1px; font-weight: 800; }
 
     /* 발뮤다 스타일 서브 네비게이션 (Sticky LNB) */
     .sub-nav {
@@ -105,7 +105,9 @@
         border-radius: 100px;
         font-size: 13px;
         font-weight: 700;
+        transition: background 0.2s;
     }
+    .btn-buy:hover { background: var(--samsung-gray-700); }
 
     /* Breadcrumb */
     .breadcrumb {
@@ -127,17 +129,17 @@
         align-items: flex-start;
     }
 
-    /* 이미지 갤러리 */
     .product-gallery { width: 100%; }
 
     .main-image-container {
         position: relative;
         width: 100%;
         aspect-ratio: 1/1;
-        background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
+        background: #f8f9fa;
         border-radius: 24px;
         overflow: hidden;
         margin-bottom: 16px;
+        border: 1px solid var(--samsung-gray-200);
     }
 
     .main-image {
@@ -164,7 +166,7 @@
         justify-content: center;
         opacity: 0;
         transition: opacity 0.3s, background 0.3s, transform 0.2s;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         z-index: 10;
     }
 
@@ -330,7 +332,9 @@
         font-weight: 700;
         cursor: pointer;
         text-align: center;
+        transition: background 0.2s;
     }
+    .btn-primary:hover { background: var(--samsung-gray-900); }
 
     .sec-container {
         padding: 100px 40px;
@@ -510,7 +514,7 @@
 <section id="product" class="product-hero">
     <div class="product-gallery">
         <div class="main-image-container">
-            <img id="mainImage" src="images/opal/main-product-01.jpg" alt="OPAL 빌트인 정수기" class="main-image">
+            <img id="mainImage" src="images/opal/main-product-01.jpg" alt="OPAL 빌트인 정수기" class="main-image" onerror="handleImgError(this, 'opal', 1)">
             <button class="gallery-btn prev-btn" onclick="changeImage(-1)" aria-label="이전 이미지">❮</button>
             <button class="gallery-btn next-btn" onclick="changeImage(1)" aria-label="다음 이미지">❯</button>
             <div class="image-counter">
@@ -518,13 +522,13 @@
             </div>
         </div>
         <div class="thumbnail-list">
-            <div class="thumbnail active" onclick="setImage(0)"><img src="images/opal/main-product-01.jpg" alt="정수기 이미지 1"></div>
-            <div class="thumbnail" onclick="setImage(1)"><img src="images/opal/main-product-02.jpg" alt="정수기 이미지 2"></div>
-            <div class="thumbnail" onclick="setImage(2)"><img src="images/opal/main-product-03.jpg" alt="정수기 이미지 3"></div>
-            <div class="thumbnail" onclick="setImage(3)"><img src="images/opal/main-product-04.jpg" alt="정수기 이미지 4"></div>
-            <div class="thumbnail" onclick="setImage(4)"><img src="images/opal/main-product-05.jpg" alt="정수기 이미지 5"></div>
-            <div class="thumbnail" onclick="setImage(5)"><img src="images/opal/main-product-06.jpg" alt="정수기 이미지 6"></div>
-            <div class="thumbnail" onclick="setImage(6)"><img src="images/opal/main-product-07.jpg" alt="정수기 이미지 7"></div>
+            <div class="thumbnail active" onclick="setImage(0)"><img src="images/opal/main-product-01.jpg" alt="OPAL 1" onerror="handleImgError(this, 'opal', 1)"></div>
+            <div class="thumbnail" onclick="setImage(1)"><img src="images/opal/main-product-02.jpg" alt="OPAL 2" onerror="handleImgError(this, 'opal', 2)"></div>
+            <div class="thumbnail" onclick="setImage(2)"><img src="images/opal/main-product-03.jpg" alt="OPAL 3" onerror="handleImgError(this, 'opal', 3)"></div>
+            <div class="thumbnail" onclick="setImage(3)"><img src="images/opal/main-product-04.jpg" alt="OPAL 4" onerror="handleImgError(this, 'opal', 4)"></div>
+            <div class="thumbnail" onclick="setImage(4)"><img src="images/opal/main-product-05.jpg" alt="OPAL 5" onerror="handleImgError(this, 'opal', 5)"></div>
+            <div class="thumbnail" onclick="setImage(5)"><img src="images/opal/main-product-06.jpg" alt="OPAL 6" onerror="handleImgError(this, 'opal', 6)"></div>
+            <div class="thumbnail" onclick="setImage(6)"><img src="images/opal/main-product-07.jpg" alt="OPAL 7" onerror="handleImgError(this, 'opal', 7)"></div>
         </div>
     </div>
     
@@ -610,14 +614,14 @@
         <h2 class="sec-title">내가 원하는 온도와 출수량으로<br>상황에 맞춰 사용하는 출수 커스터마이징</h2>
         <p class="sec-desc">SmartThings로 내가 원하는 출수량과 온도를 설정하세요.<br>10ml 단위까지 원하는 대로 미세 출수량 조절이 가능합니다.</p>
         <div class="feature-image">
-            <img src="images/opal/feature-02.png" alt="Smart Things 앱 연동">
+            <img src="images/opal/feature-02.jpg" alt="Smart Things 앱 연동" onerror="handleImgError(this, 'opal', 'tech1')">
         </div>
 
         <div style="margin-top: 100px;">
             <h2 class="sec-title">방문 케어 없이도 99.9% 청결하게<br>청소하는 직수관 자동 살균</h2>
             <p class="sec-desc">3일에 한 번 자동 전기분해 살균 시스템이 세균의 99.9%를 제거해 주니까<br>일정도 위생도 걱정 없죠.</p>
             <div class="feature-image">
-                <img src="images/opal/feature-04.jpg" alt="직수관 자동 살균 시스템">
+                <img src="images/opal/feature-04.jpg" alt="직수관 자동 살균 시스템" onerror="handleImgError(this, 'opal', 'tech2')">
             </div>
         </div>
     </section>
@@ -629,7 +633,7 @@
         <h2 class="sec-title" style="color:var(--samsung-white);">당신의 취향까지 생각한<br>다양한 파우셋 컬러</h2>
         <p class="sec-desc">인테리어에 딱 맞는 컬러로 자유롭게 선택하세요.<br>차분한 Cool Gray, Off Black부터 감각적인 Off White, Mellow Beige까지.</p>
         <div class="feature-image">
-            <img src="images/opal/feature-01.jpg" alt="파우셋 컬러 디테일">
+            <img src="images/opal/feature-01.jpg" alt="파우셋 컬러 디테일" onerror="handleImgError(this, 'opal', 'design')">
         </div>
     </section>
 </div>
@@ -640,7 +644,7 @@
         <h2 class="sec-title">미세플라스틱(Microplastics) 제거<br>NSF 인증받은 4단계 필터 시스템</h2>
         <p class="sec-desc">NSF 인증을 받은 4단계 필터로 미세플라스틱과 중금속, 기생충,<br>의약물질 및 신종 오염물질을 포함하여 바이러스까지 효과적으로 제거해 줍니다.</p>
         <div class="feature-image" style="margin-bottom: 60px;">
-            <img src="images/opal/feature-03.png" alt="4단계 필터 시스템 구조">
+            <img src="images/opal/feature-03.jpg" alt="4단계 필터 시스템 구조" onerror="handleImgError(this, 'opal', 'filter')">
         </div>
 
         <div class="care-cards">
@@ -766,6 +770,40 @@
 </footer>
 
 <script>
+function handleImgError(img, modelName, id) {
+    img.onerror = null;
+    const colors = { lumos: '#1428a0', opal: '#00a896', onyx: '#111827', jewel: '#7209b7' };
+    const theme = colors[modelName.toLowerCase()] || '#00a896';
+    const num = typeof id === 'number' ? id : 1;
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800">
+        <defs>
+            <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#f8f9fa"/>
+                <stop offset="100%" stop-color="#e9ecef"/>
+            </linearGradient>
+            <linearGradient id="metal" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#d1d5db"/>
+                <stop offset="50%" stop-color="#ffffff"/>
+                <stop offset="100%" stop-color="#9ca3af"/>
+            </linearGradient>
+            <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+                <feDropShadow dx="0" dy="12" stdDeviation="16" flood-opacity="0.12"/>
+            </filter>
+        </defs>
+        <rect width="800" height="800" fill="url(#bgGrad)"/>
+        <g filter="url(#shadow)">
+            <rect x="375" y="200" width="50" height="360" rx="25" fill="url(#metal)"/>
+            <path d="M 400 200 C 400 120, 300 120, 300 200 L 300 240" fill="none" stroke="url(#metal)" stroke-width="50" stroke-linecap="round"/>
+            <circle cx="300" cy="245" r="15" fill="${theme}"/>
+            <circle cx="400" cy="300" r="10" fill="${theme}"/>
+            <ellipse cx="400" cy="560" rx="60" ry="16" fill="url(#metal)"/>
+        </g>
+        <text x="400" y="650" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="28" font-weight="800" fill="#111827" text-anchor="middle" letter-spacing="-0.5">LIVINGCARE ${modelName.toUpperCase()}</text>
+        <text x="400" y="690" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="16" font-weight="600" fill="#6b7280" text-anchor="middle">Thermoelectric Built-in Purifier • View ${num}</text>
+    </svg>`;
+    img.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
+}
+
 let currentImageIndex = 0;
 const images = [
     'images/opal/main-product-01.jpg',
@@ -785,6 +823,7 @@ function setImage(index) {
     mainImage.style.opacity = '0';
     setTimeout(() => {
         mainImage.src = images[index];
+        mainImage.onerror = function() { handleImgError(this, 'opal', index + 1); };
         mainImage.style.opacity = '1';
     }, 150);
 
