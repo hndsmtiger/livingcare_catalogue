@@ -21,7 +21,7 @@
         scroll-behavior: smooth;
     }
     section[id], div[id] {
-        scroll-margin-top: 125px;
+        scroll-margin-top: 155px;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -116,20 +116,33 @@
     }
     .btn-buy:hover { background: var(--samsung-gray-700); }
 
-    /* Breadcrumb */
+    /* Breadcrumb - 동적 뎁스 변경 (Home > JEWEL > Product) */
     .breadcrumb {
         max-width: 1440px;
         margin: 0 auto;
-        padding: 16px 40px 0;
-        font-size: 12px;
+        padding: 32px 40px 16px;
+        font-size: 13px;
+        font-weight: 600;
         color: var(--samsung-gray-500);
+    }
+    .breadcrumb a {
+        color: var(--samsung-gray-700);
+        transition: color 0.2s;
+    }
+    .breadcrumb a:hover {
+        color: var(--samsung-black);
+        text-decoration: underline;
+    }
+    .breadcrumb-active {
+        color: var(--samsung-black);
+        font-weight: 800;
     }
 
     /* Section 1: Product Hero Section */
     .product-hero {
         max-width: 1440px;
         margin: 0 auto;
-        padding: 24px 40px 80px;
+        padding: 16px 40px 80px;
         display: grid;
         grid-template-columns: 1.2fr 1fr;
         gap: 80px;
@@ -481,8 +494,9 @@
 
 <header class="header">
     <div class="header-inner">
-        <div class="logo">LIVINGCARE</div>
+        <a href="home.html" class="logo">LIVINGCARE</a>
         <nav class="nav-links">
+            <a href="home.html">HOME</a>
             <a href="lumos.html">LUMOS</a>
             <a href="opal.html">OPAL</a>
             <a href="onyx.html">ONYX</a>
@@ -514,11 +528,11 @@
     </div>
 </nav>
 
-<div class="breadcrumb">
-    Home &gt; Products &gt; JEWEL &gt; JEWEL 빌트인 정수기
+<div id="product" class="breadcrumb">
+    <a href="home.html">Home</a> &gt; <a href="jewel.html">JEWEL</a> &gt; <span id="breadcrumbSection" class="breadcrumb-active">Product</span>
 </div>
 
-<section id="product" class="product-hero">
+<section class="product-hero">
     <div class="product-gallery">
         <div class="main-image-container">
             <img id="mainImage" src="images/jewel/main-product-01.jpg" alt="JEWEL 빌트인 정수기" class="main-image" onerror="handleImgError(this, 'jewel', 1)">
@@ -885,10 +899,11 @@ document.addEventListener('DOMContentLoaded', function() {
 window.addEventListener('scroll', () => {
     const sections = document.querySelectorAll('section[id], div[id]');
     const navLinks = document.querySelectorAll('.sub-nav-links a');
+    const breadcrumbSec = document.getElementById('breadcrumbSection');
     
-    let current = '';
+    let current = 'product';
     sections.forEach(section => {
-        const sectionTop = section.offsetTop - 120;
+        const sectionTop = section.offsetTop - 180;
         if (pageYOffset >= sectionTop) {
             current = section.getAttribute('id');
         }
@@ -900,6 +915,20 @@ window.addEventListener('scroll', () => {
             link.classList.add('active');
         }
     });
+
+    if (breadcrumbSec && current) {
+        const titleMap = {
+            'product': 'Product',
+            'technology': 'Technology',
+            'design': 'Design',
+            'filter': 'Filter',
+            'story': 'Story',
+            'specification': 'Specification'
+        };
+        if (titleMap[current]) {
+            breadcrumbSec.textContent = titleMap[current];
+        }
+    }
 });
 </script>
 
