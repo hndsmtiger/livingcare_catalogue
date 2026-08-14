@@ -239,9 +239,7 @@
         margin-bottom: 8px;
         letter-spacing: -0.5px;
     }
-    .model-number { font-size: 14px; color: var(--samsung-gray-500); margin-bottom: 24px; }
-    .rating { display: flex; align-items: center; gap: 8px; margin-bottom: 32px; font-size: 14px; }
-    .stars { color: #ffc107; font-size: 18px; }
+    .model-number { font-size: 14px; color: var(--samsung-gray-500); margin-bottom: 32px; }
 
     .accordion-group { 
         border-bottom: 1px solid var(--samsung-gray-200); 
@@ -428,25 +426,16 @@
 
     .story-block {
         max-width: 800px;
-        margin: 0 auto 80px;
+        margin: 0 auto;
         text-align: center;
     }
     .story-quote {
-        font-size: 22px;
-        font-weight: 600;
+        font-size: 24px;
+        font-weight: 700;
         line-height: 1.7;
         margin-bottom: 24px;
         letter-spacing: -0.5px;
     }
-
-    .review-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px; text-align: left; }
-    .review-header h2 { font-size: 32px; font-weight: 800; }
-    .review-summary { text-align: right; }
-    .review-summary .big-score { font-size: 48px; font-weight: 800; }
-    .review-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; text-align: left; }
-    .review-card { padding: 32px; border: 1px solid var(--samsung-gray-200); border-radius: 16px; background: var(--samsung-white); }
-    .review-card .stars { margin-bottom: 16px; }
-    .review-card p { font-size: 15px; line-height: 1.5; color: var(--samsung-gray-700); }
 
     .spec-table {
         width: 100%;
@@ -556,12 +545,6 @@
     <div class="product-info">
         <h1>OPAL Built-in Purifier</h1>
         <div class="model-number">UCHP-02</div>
-        
-        <div class="rating">
-            <span class="stars">★★★★★</span>
-            <strong>4.8</strong>
-            <span style="color: var(--samsung-gray-500);">(975)</span>
-        </div>
 
         <div class="accordion-group">
             <button class="accordion-btn active" onclick="toggleAccordion(this)">
@@ -693,38 +676,15 @@
 
 <div id="story" class="bg-light">
     <section class="sec-container">
-        <div class="sec-category">Story & Reviews</div>
+        <div class="sec-category">Story</div>
         <div class="story-block">
             <p class="story-quote">
                 "Discover the Livingcare under sink water purifier, the perfect blend of innovation and convenience for modern living."
             </p>
-            <p style="color:var(--samsung-gray-700); font-size:15px; line-height:1.7;">
+            <p style="color:var(--samsung-gray-700); font-size:16px; line-height:1.8;">
                 공간을 해치지 않는 깔끔한 언더싱크 설계와 라이프스타일을 위한 미세 제어 기술.<br>
                 리빙케어가 제안하는 정수의 새로운 기준을 경험해보세요.
             </p>
-        </div>
-
-        <div class="review-header">
-            <h2>Customer Reviews</h2>
-            <div class="review-summary">
-                <div class="big-score">4.8</div>
-                <div class="stars">★★★★★</div>
-                <div style="color: var(--samsung-gray-500); font-size: 14px;">975개의 리뷰</div>
-            </div>
-        </div>
-        <div class="review-cards">
-            <div class="review-card">
-                <div class="stars">★★★★★</div>
-                <p>아니 이렇게 좋은 정수기가 있다는게 믿어지지 않아요. 씽크대 위에 구멍하나 뚫고 하부에 컴퓨터 본체처럼 생긴거 하나 넣고 끝. 간단하게 설치하고 필터도 간편하게...</p>
-            </div>
-            <div class="review-card">
-                <div class="stars">★★★★★</div>
-                <p>이것저것 고민하다가 온수 냉수 정수 기능이 다 있어서 최종적으로 선택하게 되었습니다. 청소도 간편하고 음수량조절도 다양하게 나누어져 있어 사용하기 너무 편리합니다.</p>
-            </div>
-            <div class="review-card">
-                <div class="stars">★★★★★</div>
-                <p>정수기를 구매할려고 검색도 많이 하고 상품평도 많이보고 비교해보다 결국 비스포크정수기로 결정해서 구매했어요~ 자리도 차지 많이 하지 않고 깔끔해서 맘에 듭니다.</p>
-            </div>
         </div>
     </section>
 </div>
