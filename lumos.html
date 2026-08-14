@@ -55,10 +55,22 @@
         font-size: 14px;
         font-weight: 700;
     }
-    .nav-links { display: flex; gap: 30px; }
-    .nav-links a { text-decoration: none; color: var(--samsung-black); transition: opacity 0.2s; }
-    .nav-links a:hover, .nav-links a.active { opacity: 0.6; text-decoration: underline; }
-    .logo { font-size: 20px; letter-spacing: -1px; font-weight: 800; }
+    .nav-links { display: flex; gap: 30px; align-items: center; }
+    .nav-links a { 
+        text-decoration: none; 
+        color: var(--samsung-gray-500); 
+        font-size: 14px; 
+        font-weight: 600; 
+        transition: all 0.2s ease; 
+        padding-bottom: 2px; 
+    }
+    .nav-links a:hover { color: var(--samsung-black); }
+    .nav-links a.active { 
+        color: var(--samsung-black); 
+        font-size: 16px; 
+        font-weight: 800; 
+        border-bottom: 2.5px solid var(--samsung-black); 
+    }
 
     /* 발뮤다 스타일 서브 네비게이션 (Sticky LNB) */
     .sub-nav {
@@ -85,16 +97,18 @@
     }
     .sub-nav-links a {
         font-size: 14px;
-        font-weight: 700;
+        font-weight: 600;
         color: var(--samsung-gray-500);
-        transition: color 0.2s;
+        transition: all 0.2s ease;
         padding: 16px 0;
         display: inline-block;
     }
-    .sub-nav-links a:hover,
+    .sub-nav-links a:hover { color: var(--samsung-black); }
     .sub-nav-links a.active {
+        font-size: 15px;
+        font-weight: 800;
         color: var(--samsung-black);
-        border-bottom: 2px solid var(--samsung-black);
+        border-bottom: 2.5px solid var(--samsung-black);
     }
     .sub-nav-cta {
         display: flex;
@@ -599,7 +613,7 @@
             <div class="option-buttons" id="color">
                 <button class="option-btn active" data-value="cool-gray">Cool Gray</button>
                 <button class="option-btn" data-value="off-black">Off Black</button>
-                           </div>
+            </div>
         </div>
 
         <div class="cta-buttons">
@@ -614,14 +628,14 @@
         <h2 class="sec-title">슬림한 디자인의 파우셋만 남기고, 본체는 싱크대 하부장으로 쏙!<br>주방공간을 넓게, 하부장도 더 넓게</h2>
         <p class="sec-desc">열전반도체를 활용하여 본체의 크기도 최대 54% 작게! <br>작고 슬림한 본체로 하부장도 46% 더 넓게!</p>
         <div class="feature-image">
-            <img src="images/lumos/feature-02.jpg" alt="Smart Things 앱 연동" onerror="handleImgError(this, 'lumos', 'tech1')">
+            <img src="images/lumos/feature-02.jpg" alt="하부장 컴팩트 설치" onerror="handleImgError(this, 'lumos', 'tech1')">
         </div>
 
         <div style="margin-top: 100px;">
             <h2 class="sec-title">물 끓일 필요없이 한번에 딱!<br>3단계 온도 설정으로 편리하게</h2>
             <p class="sec-desc">귀여운 아기 분유, 몸에 좋은 차 그리고 커피 한잔의 여유,<br>다양한 온도로 쉽고 편리하게 사용하세요.</p>
             <div class="feature-image">
-                <img src="images/lumos/feature-04.jpg" alt="직수관 자동 살균 시스템" onerror="handleImgError(this, 'lumos', 'tech2')">
+                <img src="images/lumos/feature-04.jpg" alt="3단계 맞춤 온도 기능" onerror="handleImgError(this, 'lumos', 'tech2')">
             </div>
         </div>
 
@@ -629,7 +643,7 @@
             <h2 class="sec-title">원하는 용량만큼<br>4단계 정량출수</h2>
             <p class="sec-desc">쉽고 간편하게 버튼 터치 한번으로 필요한 용량만큼<br>정확한 양을 출수하여 편리하게 사용할 수 있어요.</p>
             <div class="feature-image">
-                <img src="images/lumos/feature-04.jpg" alt="직수관 자동 살균 시스템" onerror="handleImgError(this, 'lumos', 'tech2')">
+                <img src="images/lumos/feature-04.jpg" alt="4단계 정량 출수 제어" onerror="handleImgError(this, 'lumos', 'tech3')">
             </div>
         </div>
     </section>
@@ -639,16 +653,16 @@
     <section class="sec-container">
         <div class="sec-category" style="color:var(--samsung-gray-500);">Design</div>
         <h2 class="sec-title" style="color:var(--samsung-white);">당신의 취향까지 생각한<br>미니멀 빌트인 디자인</h2>
-        <p class="sec-desc">고급스러운 소재와와 미니멀한 디자인으로 주방의 품격을 올려보세요.<br>차분한 Cool Gray와 감각적인 Off Black.</p>
+        <p class="sec-desc">고급스러운 소재와 미니멀한 디자인으로 주방의 품격을 올려보세요.<br>차분한 Cool Gray와 감각적인 Off Black.</p>
         <div class="feature-image">
             <img src="images/lumos/feature-01.jpg" alt="파우셋 컬러 디테일" onerror="handleImgError(this, 'lumos', 'design')">
         </div>
 
-         <div style="margin-top: 100px;">
-            <h2 class="sec-title">iF Design 2025 선정!<br>대한민국 중소기업 정수기 최초 수상!</h2>
+        <div style="margin-top: 100px;">
+            <h2 class="sec-title" style="color:var(--samsung-white);">iF Design 2025 선정!<br>대한민국 중소기업 정수기 최초 수상!</h2>
             <p class="sec-desc">고급스럽고 품격있는 당신의 주방,<br>감각에 맞는 디자인을 선택하세요.</p>
             <div class="feature-image">
-                <img src="images/lumos/feature-04.jpg" alt="직수관 자동 살균 시스템" onerror="handleImgError(this, 'lumos', 'tech2')">
+                <img src="images/lumos/feature-04.jpg" alt="iF 디자인 어워드 수상" onerror="handleImgError(this, 'lumos', 'design2')">
             </div>
         </div>
     </section>
@@ -664,19 +678,21 @@
         </div>
 
         <div style="margin-top: 100px;">
-        <h2 class="sec-title">NASA에서 개발한 기술로<br>깐깐하게 정수되어 깨끗한 물</h2>
-        <p class="sec-desc">활성탄흡착과 정전흡착 방식으로 물속 각종 유해물질을 필터링하며,<br>각각의 필터는 특정한 오염물질을 제거하는 데 특화되어 있습니다.</p>
-        <div class="feature-image" style="margin-bottom: 60px;">
-            <img src="images/lumos/feature-03.jpg" alt="4단계 필터 시스템 구조" onerror="handleImgError(this, 'lumos', 'filter')">
+            <h2 class="sec-title">NASA에서 개발한 기술로<br>깐깐하게 정수되어 깨끗한 물</h2>
+            <p class="sec-desc">활성탄흡착과 정전흡착 방식으로 물속 각종 유해물질을 필터링하며,<br>각각의 필터는 특정한 오염물질을 제거하는 데 특화되어 있습니다.</p>
+            <div class="feature-image" style="margin-bottom: 60px;">
+                <img src="images/lumos/feature-03.jpg" alt="NASA 흡착 기술 필터" onerror="handleImgError(this, 'lumos', 'filter2')">
+            </div>
         </div>
 
-         <div style="margin-top: 100px;">
+        <div style="margin-top: 100px;">
             <h2 class="sec-title">필터교체 시기도<br>알아서 척척!</h2>
             <p class="sec-desc">스마트 알림으로 필터 교체시기를<br>교체시기 1개월전부터 꼼꼼하게 안내해드려요.</p>
             <div class="feature-image">
-                <img src="images/lumos/feature-04.jpg" alt="직수관 자동 살균 시스템" onerror="handleImgError(this, 'lumos', 'tech2')">
+                <img src="images/lumos/feature-04.jpg" alt="스마트 필터 교체 알림" onerror="handleImgError(this, 'lumos', 'filter3')">
             </div>
         </div>
+
         <div class="care-cards">
             <div class="care-card">
                 <h3>1st Filter (Carbon Block)</h3>
