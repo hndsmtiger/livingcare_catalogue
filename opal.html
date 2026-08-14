@@ -21,7 +21,7 @@
         scroll-behavior: smooth;
     }
     section[id], div[id] {
-        scroll-margin-top: 155px;
+        scroll-margin-top: 111px;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -863,7 +863,7 @@ window.addEventListener('scroll', () => {
     
     let current = 'product';
     sections.forEach(section => {
-        const sectionTop = section.offsetTop - 180;
+        const sectionTop = section.offsetTop - 130;
         if (pageYOffset >= sectionTop) {
             current = section.getAttribute('id');
         }
