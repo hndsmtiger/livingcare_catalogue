@@ -71,6 +71,7 @@
         font-weight: 800; 
         border-bottom: 2.5px solid var(--samsung-black); 
     }
+    .logo { font-size: 20px; letter-spacing: -1px; font-weight: 800; }
 
     /* 발뮤다 스타일 서브 네비게이션 (Sticky LNB) */
     .sub-nav {
@@ -253,7 +254,10 @@
         margin-bottom: 8px;
         letter-spacing: -0.5px;
     }
-    .model-number { font-size: 14px; color: var(--samsung-gray-500); margin-bottom: 32px; }
+    .model-number { font-size: 14px; color: var(--samsung-gray-500); margin-bottom: 16px; }
+    
+    .rating { display: flex; align-items: center; gap: 8px; margin-bottom: 24px; font-size: 14px; }
+    .stars { color: #ffc107; font-size: 18px; }
 
     .accordion-group { 
         border-bottom: 1px solid var(--samsung-gray-200); 
@@ -400,12 +404,18 @@
         width: 100%;
         max-width: 1000px;
         height: 500px;
-        background: #e0e0e0;
         margin: 0 auto;
         border-radius: 32px;
         overflow: hidden;
+        background: #e0e0e0;
     }
-    .feature-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .feature-image img { 
+        width: 100%; 
+        height: 100%; 
+        object-fit: cover; 
+        display: block; 
+        border-radius: 32px;
+    }
 
     .bg-light { background: var(--samsung-gray-100); }
     .bg-dark { background: var(--samsung-black); color: var(--samsung-white); }
@@ -450,6 +460,15 @@
         margin-bottom: 24px;
         letter-spacing: -0.5px;
     }
+
+    .review-header { display: flex; justify-content: space-between; align-items: flex-end; margin-top: 80px; margin-bottom: 40px; text-align: left; }
+    .review-header h2 { font-size: 32px; font-weight: 800; }
+    .review-summary { text-align: right; }
+    .review-summary .big-score { font-size: 48px; font-weight: 800; }
+    .review-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; text-align: left; }
+    .review-card { padding: 32px; border: 1px solid var(--samsung-gray-200); border-radius: 16px; background: var(--samsung-white); }
+    .review-card .stars { margin-bottom: 16px; }
+    .review-card p { font-size: 15px; line-height: 1.5; color: var(--samsung-gray-700); }
 
     .spec-table {
         width: 100%;
@@ -613,6 +632,7 @@
             <div class="option-buttons" id="color">
                 <button class="option-btn active" data-value="cool-gray">Cool Gray</button>
                 <button class="option-btn" data-value="off-black">Off Black</button>
+                <button class="option-btn" data-value="off-white">Mellow Beige</button>
             </div>
         </div>
 
@@ -721,12 +741,15 @@
         <div class="sec-category">Story</div>
         <div class="story-block">
             <p class="story-quote">
-                "Discover the Livingcare under sink water purifier, the perfect blend of innovation and convenience for modern living."
+                "Since 2009, LIVINGCARE has been a Global Top-Tier thermoelectric semiconductor specialist, supplying semiconductor test equipment to global leaders Samsung Electronics and SK Hynix."
             </p>
-            <p style="color:var(--samsung-gray-700); font-size:16px; line-height:1.8;">
-                공간을 해치지 않는 깔끔한 언더싱크 설계와 라이프스타일을 위한 미세 제어 기술.<br>
-                리빙케어가 제안하는 정수의 새로운 기준을 경험해보세요.
+            <p style="color:var(--samsung-gray-700); font-size:16px; line-height:1.8; margin-bottom: 40px; word-break: keep-all;">
+                LIVINGCARE는 2009년부터 글로벌 반도체 제조업체인 삼성전자와 SK하이닉스에<br>
+                반도체 검사 장비를 납품해 오고 있는 Global Top Tier 열전반도체 전문업체입니다.
             </p>
+            <div class="feature-image">
+                <img src="images/opal/story-01.jpg" alt="LIVINGCARE 반도체 공정 스토리" onerror="handleImgError(this, 'opal', 'story')">
+            </div>
         </div>
     </section>
 </div>
